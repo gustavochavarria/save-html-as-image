@@ -12,11 +12,15 @@
     "url": "git+https://github.com/gustavochavarria/download-html-to-image.git"
   },
   "keywords": [
+    "convert html to image png or jpg",
+    "dom to image",
+    "dom-to-image",
     "download",
+    "file-saver",
     "html-to-image",
-    "save-html",
-    "save-node",
-    "dom-to-image"
+    "save dom",
+    "save node",
+    "save-html"
   ],
   "author": "Gustavo Chavarria",
   "license": "ISC",
