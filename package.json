@@ -1,6 +1,6 @@
 {
   "name": "download-html-to-image",
-  "version": "1.0.0git ",
+  "version": "1.0.0",
   "description": "Download the html to image (jpg, png)",
   "main": "index.js",
   "scripts": {
