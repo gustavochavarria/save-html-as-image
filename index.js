@@ -9,6 +9,7 @@ import { toPng } from 'html-to-image';
 let ORIGINAL_PADDING = null;
 const DEFAULT_OPTIONS = {
   forceFixText: false,
+  downloadName: 'Image'
 };
 
 /**
@@ -77,7 +78,9 @@ const hardFixText = (
  *
  * @param {Document} svgs
  */
-const replaceFontAwesomeIconsWithImages = async svgs => {
+const replaceFontAwesomeIconsWithImages = async node => {
+  const svgs = node.querySelectorAll('svg');
+
   const images = [];
 
   for (const item of svgs) {
@@ -159,7 +162,7 @@ export const downloadDOM = async (
     });
   } catch {
     /* Litte hack because not working on safari */
-    await replaceFontAwesomeIconsWithImages(svgs);
+    await replaceFontAwesomeIconsWithImages(node);
     await toPng(node);
 
     canvas = await toPng(node, {
@@ -185,7 +188,7 @@ const applyFixs = (node, forceFixText = false) => {
     fixColorSvg(el);
     fixSizeSvg(el);
   }
-}
+};
 
 export const downloadAsPng = async (node, userOptions = {}) => {
   const options = { ...DEFAULT_OPTIONS, ...userOptions };
@@ -194,13 +197,16 @@ export const downloadAsPng = async (node, userOptions = {}) => {
 
   setTemporalPadding(node);
 
+  const dateDownload = new Date().toDateString();
+  let canvas = null;
+
   try {
     canvas = await toPng(node, {
       style: { boxShadow: 'none' }
     });
   } catch {
     /* Litte hack because not working on safari */
-    await replaceFontAwesomeIconsWithImages(svgs);
+    await replaceFontAwesomeIconsWithImages(node);
     await toPng(node);
 
     canvas = await toPng(node, {
@@ -210,7 +216,7 @@ export const downloadAsPng = async (node, userOptions = {}) => {
 
   revertPadding(node);
 
-  saveAs(canvas, `${nameOfPage} (${dateDownload}).png`);
+  saveAs(canvas, `${options.downloadName} (${dateDownload}).png`);
 };
 
 // Export const downloadAsJpg = async() => {};

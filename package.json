@@ -2,7 +2,7 @@
   "name": "download-html-to-image",
   "version": "0.0.1",
   "description": "Download the html to image (jpg, png)",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "xo --fix",
     "test": "xo"
