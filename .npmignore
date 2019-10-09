@@ -1,0 +1,12 @@
+# Documentation
+README*
+CHANGELOG*
+LICENSE*
+
+# Tests and innecesaries files
+__tests__
+yarn.lock
+
+# Configs
+.editorconfig
+.prettierrc

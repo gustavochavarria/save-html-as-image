@@ -1,0 +1,37 @@
+{
+  "name": "download-html-to-image",
+  "version": "0.0.1",
+  "description": "Download the html to image (jpg, png)",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo --fix",
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavochavarria/download-html-to-image.git"
+  },
+  "keywords": [
+    "download",
+    "html-to-image",
+    "save-html",
+    "save-node",
+    "dom-to-image"
+  ],
+  "author": "Gustavo Chavarria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavochavarria/download-html-to-image/issues"
+  },
+  "homepage": "https://github.com/gustavochavarria/download-html-to-image#readme",
+  "dependencies": {
+    "file-saver": "^2.0.2",
+    "html-to-image": "^0.1.1",
+    "save-svg-as-png": "^1.4.14",
+    "xo": "^0.25.3"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true
+  }
+}
