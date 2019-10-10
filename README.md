@@ -1,5 +1,5 @@
-# download-html-to-image
-Download the HTML (DOM) to Image (JPG, PNG)
+# download-html-as-image
+Download the HTML (DOM) as Image (JPG, PNG)
 
 
 ## Dependency
