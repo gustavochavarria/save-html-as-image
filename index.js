@@ -9,7 +9,7 @@ import { toPng } from 'html-to-image';
 let ORIGINAL_PADDING = null;
 const DEFAULT_OPTIONS = {
   forceFixText: false,
-  downloadName: 'Image'
+  filename: 'Image'
 };
 
 /**
@@ -140,41 +140,14 @@ export const downloadDOM = async (
   nameOfPage = 'Image',
   forceFixText = false
 ) => {
-  const dateDownload = new Date().toDateString();
-  const svgs = node.querySelectorAll('svg');
-  let canvas = null;
-
-  setTemporalPadding(node);
-  fixText(node);
-
-  if (forceFixText) {
-    hardFixText(node);
-  }
-
-  try {
-    for (const el of svgs) {
-      fixColorSvg(el);
-      fixSizeSvg(el);
-    }
-
-    canvas = await toPng(node, {
-      style: { boxShadow: 'none' }
-    });
-  } catch {
-    /* Litte hack because not working on safari */
-    await replaceFontAwesomeIconsWithImages(node);
-    await toPng(node);
-
-    canvas = await toPng(node, {
-      style: { boxShadow: 'none' }
-    });
-  }
-
-  revertPadding(node);
-
-  saveAs(canvas, `${nameOfPage} (${dateDownload}).png`);
+  saveAsPng(node, { forceFixText, filename: nameOfPage });
 };
 
+/**
+ *
+ * @param {Document} node
+ * @param {Boolean} forceFixText
+ */
 const applyFixs = (node, forceFixText = false) => {
   const svgs = node.querySelectorAll('svg');
 
@@ -190,7 +163,12 @@ const applyFixs = (node, forceFixText = false) => {
   }
 };
 
-export const downloadAsPng = async (node, userOptions = {}) => {
+/**
+ *
+ * @param {Document} node
+ * @param {Object} userOptions
+ */
+export const saveAsPng = async (node, userOptions = {}) => {
   const options = { ...DEFAULT_OPTIONS, ...userOptions };
 
   applyFixs(node, options.forceFixText);
@@ -216,7 +194,7 @@ export const downloadAsPng = async (node, userOptions = {}) => {
 
   revertPadding(node);
 
-  saveAs(canvas, `${options.downloadName} (${dateDownload}).png`);
+  saveAs(canvas, `${options.filename} (${dateDownload}).png`);
 };
 
-// Export const downloadAsJpg = async() => {};
+// Export const saveAsJpg = async() => {};

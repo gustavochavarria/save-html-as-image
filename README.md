@@ -1,5 +1,5 @@
 # download-html-as-image
-Download the HTML (DOM) as Image (JPG, PNG)
+Save the HTML (DOM) as Image (JPG, PNG)
 
 
 ## Dependency
@@ -8,16 +8,16 @@ We use a collection of packages for generate image and download, all in one acti
 The packages are:
 
 - 'file-saver'
-- 'save-svg-as-png'
 - 'html-to-image'
+- 'save-svg-as-png'
 
 ## Usage
 
 ```
-import { downloadAsPng } from 'download-html-to-image';
+import { saveAsPng } from 'saveAsPng-html-to-image';
 
 const node = document.getElementById('elementId');
 
-downloadAsPng(node);
+saveAsPng(node);
 
 ```
