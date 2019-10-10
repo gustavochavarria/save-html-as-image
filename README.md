@@ -1,10 +1,11 @@
 # save-html-as-image
-Save the HTML (DOM) as Image (JPG, PNG)
+This can be used for a couple of things, it can save HTML (DOM) as an image (JPG,PNG) and it can convert SVG images to PNG.
 
+Convering SVG to PNG is useful for Safari Browser compatibility since it cannot render SVG images.
 
 ## Dependency
 
-We use a collection of packages for generate image and download, all in one action.
+We use a collection of packages to generate and donwnload images, all in one action.
 The packages are:
 
 - 'file-saver'
