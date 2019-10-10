@@ -1,7 +1,7 @@
 {
   "name": "download-html-to-image",
   "version": "1.0.0",
-  "description": "Download the html to image (jpg, png)",
+  "description": "Download the html to image as png or jpg",
   "main": "index.js",
   "scripts": {
     "lint": "xo --fix",
