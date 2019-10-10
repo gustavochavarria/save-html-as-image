@@ -1,4 +1,4 @@
-# download-html-as-image
+# save-html-as-image
 Save the HTML (DOM) as Image (JPG, PNG)
 
 
@@ -13,11 +13,12 @@ The packages are:
 
 ## Usage
 
-```
-import { saveAsPng } from 'saveAsPng-html-to-image';
+```js
+import { saveAsPng } from 'save-html-as-image';
 
 const node = document.getElementById('elementId');
 
+//download the node as png
 saveAsPng(node);
 
 ```
