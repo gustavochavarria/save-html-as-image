@@ -128,22 +128,6 @@ const revertPadding = node => {
 };
 
 /**
- * @deprecated
- * Download the DOM node to png file
- *
- * @param {Document} node
- * @param {String} nameOfPage
- * @param {Boolean} hardFixText
- */
-export const downloadDOM = async (
-  node,
-  nameOfPage = 'Image',
-  forceFixText = false
-) => {
-  saveAsPng(node, { forceFixText, filename: nameOfPage });
-};
-
-/**
  *
  * @param {Document} node
  * @param {Boolean} forceFixText
@@ -195,6 +179,22 @@ export const saveAsPng = async (node, userOptions = {}) => {
   revertPadding(node);
 
   saveAs(canvas, `${options.filename} (${dateDownload}).png`);
+};
+
+/**
+ * @deprecated use saveAsPng
+ * Download the DOM node to png file
+ *
+ * @param {Document} node
+ * @param {String} nameOfPage
+ * @param {Boolean} hardFixText
+ */
+export const downloadDOM = async (
+  node,
+  nameOfPage = 'Image',
+  forceFixText = false
+) => {
+  await saveAsPng(node, { forceFixText, filename: nameOfPage });
 };
 
 // Export const saveAsJpg = async() => {};
