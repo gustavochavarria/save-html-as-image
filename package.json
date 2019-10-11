@@ -1,9 +1,14 @@
 {
   "name": "save-html-as-image",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Save the html as image like png or jpg",
-  "main": "index.js",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "unpkg": "dist/index.umd.js",
   "scripts": {
+    "build": "microbundle --compress",
+    "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
   },
@@ -19,8 +24,8 @@
     "file-saver",
     "html-to-image",
     "save dom",
-    "save node",
-    "save html as image"
+    "save html as image",
+    "save node"
   ],
   "author": "Gustavo Chavarria",
   "license": "ISC",
@@ -31,7 +36,10 @@
   "dependencies": {
     "file-saver": "^2.0.2",
     "html-to-image": "^0.1.1",
-    "save-svg-as-png": "^1.4.14",
+    "save-svg-as-png": "^1.4.14"
+  },
+  "devDependencies": {
+    "microbundle": "^0.12.0-next.6",
     "xo": "^0.25.3"
   },
   "xo": {
