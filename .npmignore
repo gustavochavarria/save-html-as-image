@@ -1,7 +1,5 @@
 # Documentation
-README*
-CHANGELOG*
-LICENSE*
+CONTRIBUTING*
 
 # Tests and innecesaries files
 __tests__
@@ -10,3 +8,4 @@ yarn.lock
 # Configs
 .editorconfig
 .prettierrc
+.nvmrc
