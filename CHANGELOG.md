@@ -1,18 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2019-10-11
+
+### Added
+- saveAsJpeg, now you can save the html as jpeg.
+
 ## [1.1.0] - 2019-10-11
 
 ### Added
-- Build project with *microbundle* (support for CommonJS/Node, JS Modules, unpkg)
+- Build project with *microbundle* (support for CommonJS/Node, JS Modules, unpkg).
 
 ## [1.0.3] - 2019-10-10
 
 ### Changed
-- downloadDOM was deprecated
+- downloadDOM was deprecated.
 
 
 ## [1.0.0] - 2019-10-10
 
 ### Added
-- Init project
+- Init project.

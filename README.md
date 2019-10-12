@@ -5,7 +5,7 @@ Convering SVG to PNG is useful for Safari Browser compatibility since it cannot 
 ## Usage
 
 ```js
-import { saveAsPng } from 'save-html-as-image';
+import { saveAsPng, saveAsJpeg } from 'save-html-as-image';
 
 const node = document.getElementById('elementId');
 
