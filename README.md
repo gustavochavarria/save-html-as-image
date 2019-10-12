@@ -25,7 +25,7 @@ saveAsJpeg(node, {  filename: 'Album', printDate: false });
 The options are: 
 - **filename** : The name of the file when download.
 - **printDate** : The date of the download.
-- **forceFixText** : undefined.
+- **forceFixText** : Prevent some error with text.
 
 
 ## Browsers
