@@ -9,12 +9,24 @@ import { saveAsPng } from 'save-html-as-image';
 
 const node = document.getElementById('elementId');
 
-//download the node as png
+//download the node as png. Image (2019-12-01).png
 saveAsPng(node);
+
+//download the node as png. Report (2019-12-01).png
+saveAsPng(node, {  filename: 'Report', printDate: true });
+
+//download the node as jpeg. Album.jpeg
+saveAsJpeg(node, {  filename: 'Album', printDate: false });
 
 ```
 
 ## Options
+
+The options are: 
+- *filename* : The name of the file when download.
+- *printDate* : The date of the download.
+- *forceFixText* : undefined.
+
 
 ## Browsers
 It's tested on the lasted Chrome (Chrome 76),  Firefox and *Safari*.

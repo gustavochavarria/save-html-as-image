@@ -4,12 +4,14 @@
 
 import { saveAs } from 'file-saver';
 import { svgAsPngUri } from 'save-svg-as-png';
-import { toPng } from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 
 let ORIGINAL_PADDING = null;
+
 const DEFAULT_OPTIONS = {
+  filename: 'Image',
   forceFixText: false,
-  filename: 'Image'
+  printDate: true
 };
 
 /**
@@ -147,20 +149,69 @@ const applyFixs = (node, forceFixText = false) => {
   }
 };
 
+const getOptions = userOptions => {
+  return {
+    ...DEFAULT_OPTIONS,
+    ...userOptions
+  };
+};
+
+const getFileName = options => {
+  if (options.printDate) {
+    const date = new Date().toDateString();
+
+    return `${options.filename} (${date})`;
+  }
+
+  return options.filename;
+};
+
 /**
+ *  Save html as Jpeg Image
  *
- * @param {Document} node
- * @param {Object} userOptions
+ * @param {*} node
+ * @param {*} userOptions
  */
-export const saveAsPng = async (node, userOptions = {}) => {
-  const options = { ...DEFAULT_OPTIONS, ...userOptions };
+export const saveAsJpeg = async (node, userOptions = {}) => {
+  const options = getOptions(userOptions);
+  let canvas = null;
 
   applyFixs(node, options.forceFixText);
 
   setTemporalPadding(node);
 
-  const dateDownload = new Date().toDateString();
+  try {
+    canvas = await toJpeg(node, {
+      style: { boxShadow: 'none' }
+    });
+  } catch {
+    /* Litte hack because not working on safari */
+    await replaceFontAwesomeIconsWithImages(node);
+    await toJpeg(node);
+
+    canvas = await toJpeg(node, {
+      style: { boxShadow: 'none' }
+    });
+  }
+
+  revertPadding(node);
+
+  saveAs(canvas, `${getFileName(options)}.jpeg`);
+};
+
+/**
+ * Save html as png image
+ *
+ * @param {Document} node
+ * @param {Object} userOptions
+ */
+export const saveAsPng = async (node, userOptions = {}) => {
+  const options = getOptions(userOptions);
   let canvas = null;
+
+  applyFixs(node, options.forceFixText);
+
+  setTemporalPadding(node);
 
   try {
     canvas = await toPng(node, {
@@ -178,7 +229,7 @@ export const saveAsPng = async (node, userOptions = {}) => {
 
   revertPadding(node);
 
-  saveAs(canvas, `${options.filename} (${dateDownload}).png`);
+  saveAs(canvas, `${getFileName(options)}.png`);
 };
 
 /**
@@ -196,5 +247,3 @@ export const downloadDOM = async (
 ) => {
   await saveAsPng(node, { forceFixText, filename: nameOfPage });
 };
-
-// Export const saveAsJpg = async() => {};
