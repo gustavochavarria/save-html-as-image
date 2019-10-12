@@ -23,9 +23,9 @@ saveAsJpeg(node, {  filename: 'Album', printDate: false });
 ## Options
 
 The options are: 
-- *filename* : The name of the file when download.
-- *printDate* : The date of the download.
-- *forceFixText* : undefined.
+- **filename** : The name of the file when download.
+- **printDate** : The date of the download.
+- **forceFixText** : undefined.
 
 
 ## Browsers
@@ -45,6 +45,6 @@ The packages are:
 
 ## How it work
 
-- This library use *html-to-image* library for convert the HTML (DOM) to Image (jpg and png).
+- This library use **html-to-image** library for convert the HTML (DOM) to Image (jpg and png).
 - We use file saver to download the image generated.
-- We use save-svg-as-png to convert the svgs to img elements, only on safary or browser with stricter secure on ```<foreignObject>```
+- We use save-svg-as-png to convert the svgs to img elements, only on safary or browser with stricter secure on **<foreignObject>**
