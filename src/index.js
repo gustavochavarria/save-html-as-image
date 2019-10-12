@@ -40,11 +40,7 @@ const fixSizeSvg = el => {
  * @param {Document} node
  */
 const fixText = node => {
-  const allTexts = node.querySelectorAll('.fixed-text');
-
-  for (const text of allTexts) {
-    text.style.width = '100%';
-  }
+  hardFixText(node, ['.fixed-text']);
 };
 
 /**
@@ -72,6 +68,9 @@ const hardFixText = (
   const allTexts = node.querySelectorAll(seek);
 
   for (const text of allTexts) {
+    text.style.fontFamily = window.getComputedStyle(text).fontFamily;
+    text.style.fontSize = window.getComputedStyle(text).fontSize;
+    text.style.fontWeight = window.getComputedStyle(text).fontWeight;
     text.style.width = window.getComputedStyle(text).width;
   }
 };
