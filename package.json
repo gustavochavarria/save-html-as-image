@@ -7,7 +7,7 @@
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle --compress",
+    "build": "microbundle --compress --globals file-saver=fileSaver,html-to-image=htmlToImage,save-svg-as-png=saveSvgAsPng --name=saveHtmlAsImage",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Example</title>
+  <style>
+    section {
+      position: relative;
+      background: #ccc;
+      min-height: 400px;
+    }
+
+    section article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section article div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 10px 0px;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      width: 100px;
+      height: 40px;
+      background: purple;
+      border: 1px solid white;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="node">
+
+    <button onClick="saveNode()">Save Node</button>
+
+    <article>
+      <div>
+        <h1>H1 Title</h1>
+        <h2>H2 Title</h2>
+        <h3>H3 Title</h3>
+        <p>Text in p tags....</p>
+        <b>Bold Text</b>
+      </div>
+
+      <div>
+        <img width="200" height="200"
+          src="https://images.unsplash.com/photo-1494444753080-e0d457fa3563?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+      </div>
+
+      <div>
+        <h4>FontAwesomIcons</h4>
+        <i class="fas fa-camera"></i>
+        <i class="fa fa-camera fa-2x"></i>
+        <i class="fas fa-camera fa-3x"></i>
+      </div>
+
+    </article>
+  </section>
+
+  <script src="https://unpkg.com/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+  <script src="https://unpkg.com/html-to-image@0.1.1/lib/index.js"></script>
+  <script src="https://unpkg.com/save-svg-as-png@1.4.14/lib/saveSvgAsPng.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js""></script>
+
+  <script type=" module">
+    import { saveAsPng } from 'https://unpkg.com/save-html-as-image';
+  </script>
+
+  <script>
+    function saveNode() {
+      var node = document.getElementById('node');
+
+      saveAsPng(node);
+    }
+  </script>
+</body>
+
+
+</html>
