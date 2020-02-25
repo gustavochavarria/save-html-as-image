@@ -7,7 +7,7 @@
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "rm -irf dist && microbundle --comporess --external file-saver,html-to-image,save-svg-as-png",
+    "build": "yarn lint && rm -irf dist && microbundle --compress --external file-saver,html-to-image,save-svg-as-png",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
