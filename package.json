@@ -7,7 +7,7 @@
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle --compress --globals file-saver=fileSaver,html-to-image=htmlToImage,save-svg-as-png=saveSvgAsPng --name=saveHtmlAsImage",
+    "build": "rm -irf dist && microbundle --comporess --external file-saver,html-to-image,save-svg-as-png",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
@@ -33,14 +33,14 @@
     "url": "https://github.com/gustavochavarria/save-html-as-image/issues"
   },
   "homepage": "https://github.com/gustavochavarria/save-html-as-image#readme",
-  "dependencies": {
+  "peerDependencies": {
     "file-saver": "^2.0.2",
     "html-to-image": "^0.1.1",
     "save-svg-as-png": "^1.4.14"
   },
   "devDependencies": {
-    "microbundle": "^0.12.0-next.6",
-    "xo": "^0.25.3"
+    "microbundle": "^0.12.0-next.8",
+    "xo": "^0.27.1"
   },
   "xo": {
     "prettier": true,
