@@ -106,8 +106,7 @@ const replaceFontAwesomeIconsWithImages = async node => {
     imgElement.width = item.clientWidth;
     imgElement.height = item.clientHeight;
 
-    const parent = item.parentNode;
-    parent.replaceChild(imgElement, item);
+    item.replaceWith(imgElement);
   }
 };
 
