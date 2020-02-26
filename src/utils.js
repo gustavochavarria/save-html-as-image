@@ -3,18 +3,21 @@
 /* global document */
 
 import { svgAsPngUri } from 'save-svg-as-png';
+import { saveAs } from 'file-saver';
 
-export const DEFAULT_OPTIONS = {
+const DEFAULT_OPTIONS = {
   filename: 'Image',
   forceFixText: false,
   printDate: true
 };
 
+let ORIGINAL_PADDING = null;
+
 /**
  * Set computed style in static style of svg element
  * @param {Document} el
  */
-export const fixColorSvg = el => {
+const fixColorSvg = el => {
   const { color } = window.getComputedStyle(el);
 
   el.style.color = color;
@@ -24,7 +27,7 @@ export const fixColorSvg = el => {
  * Set computed style in static style of svg element
  * @param {Document} el
  */
-export const fixSizeSvg = el => {
+const fixSizeSvg = el => {
   const styles = window.getComputedStyle(el);
 
   el.style.width = styles.width;
@@ -35,7 +38,7 @@ export const fixSizeSvg = el => {
  * Fix all text with the class "fixed-text"
  * @param {Document} node
  */
-export const fixText = node => {
+const fixText = node => {
   hardFixText(node, ['.fixed-text']);
 };
 
@@ -44,7 +47,7 @@ export const fixText = node => {
  * @param {Document} node
  * @param {Array} seek
  */
-export const hardFixText = (
+const hardFixText = (
   node,
   seek = [
     'b',
@@ -73,9 +76,15 @@ export const hardFixText = (
 
 /**
  *
+ * Exported Functions
+ *
+ */
+
+/**
+ *
  * @param {Document} svgs
  */
-export const replaceFontAwesomeIconsWithImages = async node => {
+const replaceFontAwesomeIconsWithImages = async node => {
   const svgs = node.querySelectorAll('svg');
 
   const images = [];
@@ -104,4 +113,114 @@ export const replaceFontAwesomeIconsWithImages = async node => {
 
     item.replaceWith(imgElement);
   }
+};
+
+/**
+ *
+ * @param {Document} node
+ * @param {Boolean} forceFixText
+ */
+const applyFixs = (node, forceFixText = false) => {
+  const svgs = node.querySelectorAll('svg');
+
+  fixText(node);
+
+  if (forceFixText) {
+    hardFixText(node);
+  }
+
+  for (const el of svgs) {
+    fixColorSvg(el);
+    fixSizeSvg(el);
+  }
+};
+
+/**
+ * Merge options
+ *
+ * @param {*} userOptions
+ */
+const getOptions = userOptions => {
+  return {
+    ...DEFAULT_OPTIONS,
+    ...userOptions
+  };
+};
+
+/**
+ * Get File name
+ * @param {*} options
+ */
+const getFileName = options => {
+  if (options.printDate) {
+    const date = new Date().toDateString();
+
+    return `${options.filename} (${date})`;
+  }
+
+  return options.filename;
+};
+
+/**
+ *
+ * @param {Document} node
+ */
+const setTemporalPadding = node => {
+  ORIGINAL_PADDING = node.style.padding;
+  node.style.padding = '3px';
+};
+
+/**
+ *
+ * @param {Document} node
+ */
+const revertPadding = node => {
+  node.style.padding = ORIGINAL_PADDING;
+};
+
+/**
+ *
+ * @param {*} node
+ */
+export const filterElements = node => {
+  return node.className !== 'hide-when-downloading';
+};
+
+/**
+ *
+ * @param {*} node
+ * @param {*} userOptions
+ * @param {*} callback
+ * @param {*} extension
+ */
+export const scaffolding = async (
+  node,
+  userOptions,
+  callback,
+  extension = 'png'
+) => {
+  const options = getOptions(userOptions);
+  let canvas = null;
+
+  console.log('in scaffolding');
+
+  applyFixs(node, options.forceFixText);
+
+  setTemporalPadding(node);
+
+  try {
+    canvas = await callback();
+  } catch {
+    /* Litte hack because not working on safari */
+    await replaceFontAwesomeIconsWithImages(node);
+    await callback();
+
+    canvas = await callback();
+  }
+
+  revertPadding(node);
+
+  console.log('canvas:', canvas);
+
+  saveAs(canvas, `${getFileName(options)}.${extension}`);
 };
