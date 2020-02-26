@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [1.3.0] - 2020-02-26
+
+### Added
+- Hide elements with className "hide-when-downloading"
+
+### Refactors
+- Reduce the repetition of code
+
+
+## [1.2.1] - 2020-02-25
+
+### Fix
+- Crash when compiling code (beacause eslint rules);
+  
 ## [1.2.0] - 2019-10-11
 
 ### Added

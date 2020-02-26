@@ -37,9 +37,10 @@ You can hide elements adding the class "hide-when-downloading".
     <article>One..</article>
     <article class="hide-when-downloading">Two...</article>
   </section>
+```
 
-
-  saveAsPng(node, {  filename: 'News', printDate: true });
+```
+saveAsPng(node, {  filename: 'News', printDate: true });
   //Only the first article will be visible on the image
 ```
 
