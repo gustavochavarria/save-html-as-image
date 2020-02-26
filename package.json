@@ -1,13 +1,13 @@
 {
   "name": "save-html-as-image",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "yarn lint && rm -irf dist && microbundle --compress --external file-saver,html-to-image,save-svg-as-png",
+    "build": "yarn lint && rm -irf dist && microbundle --compress",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
@@ -33,7 +33,7 @@
     "url": "https://github.com/gustavochavarria/save-html-as-image/issues"
   },
   "homepage": "https://github.com/gustavochavarria/save-html-as-image#readme",
-  "peerDependencies": {
+  "dependencies": {
     "file-saver": "^2.0.2",
     "html-to-image": "^0.1.1",
     "save-svg-as-png": "^1.4.14"

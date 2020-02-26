@@ -202,8 +202,6 @@ export const scaffolding = async (
   const options = getOptions(userOptions);
   let canvas = null;
 
-  console.log('in scaffolding');
-
   applyFixs(node, options.forceFixText);
 
   setTemporalPadding(node);
@@ -219,8 +217,6 @@ export const scaffolding = async (
   }
 
   revertPadding(node);
-
-  console.log('canvas:', canvas);
 
   saveAs(canvas, `${getFileName(options)}.${extension}`);
 };

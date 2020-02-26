@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.3.1] - 2020-02-26
+
+### Fix
+- Fix build (dependencies needed)
+- Remove debug code (console.log)
+
 ## [1.3.0] - 2020-02-26
 
 ### Added
