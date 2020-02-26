@@ -28,6 +28,22 @@ The options are:
 - **forceFixText** : Prevent some error with text.
 
 
+## Hide Elements
+
+You can hide elements adding the class "hide-when-downloading".
+
+```
+  <section>
+    <article>One..</article>
+    <article class="hide-when-downloading">Two...</article>
+  </section>
+```
+
+```
+saveAsPng(node, {  filename: 'News', printDate: true });
+  //Only the first article will be visible on the image
+```
+
 ## Browsers
 It's tested on the lasted Chrome (Chrome 76),  Firefox and *Safari*.
 
