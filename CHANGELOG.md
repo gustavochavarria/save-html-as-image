@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 ## [1.3.1] - 2020-02-26
 
 ### Fix
-- Fix build (dependencies needed)
 - Remove debug code (console.log)
+- Fix build (dependencies needed)
+  ```  These dependencies were not found:
+   * file-saver in ./node_modules/save-html-as-image/dist/index.modern.js
+    * save-svg-as-png in ./node_modules/save-html-as-image/dist/index.modern.js 
+    
+    To install them, you can run: npm install --save file-saver save-svg-as-png ```
 
 ## [1.3.0] - 2020-02-26
 
