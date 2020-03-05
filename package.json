@@ -1,6 +1,6 @@
 {
   "name": "save-html-as-image",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -25,7 +25,9 @@
     "html-to-image",
     "save dom",
     "save html as image",
-    "save node"
+    "save node",
+    "snapshot",
+    "screenshot"
   ],
   "author": "Gustavo Chavarria",
   "license": "ISC",

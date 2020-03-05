@@ -44,6 +44,8 @@ saveAsPng(node, {  filename: 'News', printDate: true });
   //Only the first article will be visible on the image
 ```
 
+**Note**: The class "hide-when-downloading" must be on root element, That we want hide.
+
 ## Browsers
 It's tested on the lasted Chrome (Chrome 76),  Firefox and *Safari*.
 
