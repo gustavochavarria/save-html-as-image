@@ -1,6 +1,6 @@
 {
   "name": "save-html-as-image",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "microbundle": "^0.12.0-next.8",
-    "xo": "^0.27.1"
+    "xo": "^0.29.0"
   },
   "xo": {
     "prettier": true,

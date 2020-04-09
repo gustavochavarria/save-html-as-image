@@ -17,28 +17,28 @@ let ORIGINAL_PADDING = null;
  * Set computed style in static style of svg element
  * @param {Document} el
  */
-const fixColorSvg = el => {
-  const { color } = window.getComputedStyle(el);
+const fixColorSvg = (element) => {
+  const { color } = window.getComputedStyle(element);
 
-  el.style.color = color;
+  element.style.color = color;
 };
 
 /**
  * Set computed style in static style of svg element
  * @param {Document} el
  */
-const fixSizeSvg = el => {
-  const styles = window.getComputedStyle(el);
+const fixSizeSvg = (element) => {
+  const styles = window.getComputedStyle(element);
 
-  el.style.width = styles.width;
-  el.style.height = styles.height;
+  element.style.width = styles.width;
+  element.style.height = styles.height;
 };
 
 /**
  * Fix all text with the class "fixed-text"
  * @param {Document} node
  */
-const fixText = node => {
+const fixText = (node) => {
   hardFixText(node, ['.fixed-text']);
 };
 
@@ -84,14 +84,14 @@ const hardFixText = (
  *
  * @param {Document} svgs
  */
-const replaceFontAwesomeIconsWithImages = async node => {
+const replaceFontAwesomeIconsWithImages = async (node) => {
   const svgs = node.querySelectorAll('svg');
 
   const images = [];
 
   for (const item of svgs) {
     const itemAttribute = item.getAttribute('data-icon');
-    const cache = images.find(img => img.dataIcon === itemAttribute);
+    const cache = images.find((img) => img.dataIcon === itemAttribute);
 
     const imgElement = document.createElement('img');
 
@@ -129,9 +129,9 @@ const applyFixs = (node, forceFixText = false) => {
     hardFixText(node);
   }
 
-  for (const el of svgs) {
-    fixColorSvg(el);
-    fixSizeSvg(el);
+  for (const element of svgs) {
+    fixColorSvg(element);
+    fixSizeSvg(element);
   }
 };
 
@@ -140,7 +140,7 @@ const applyFixs = (node, forceFixText = false) => {
  *
  * @param {*} userOptions
  */
-const getOptions = userOptions => {
+const getOptions = (userOptions) => {
   return {
     ...DEFAULT_OPTIONS,
     ...userOptions
@@ -151,7 +151,7 @@ const getOptions = userOptions => {
  * Get File name
  * @param {*} options
  */
-const getFileName = options => {
+const getFileName = (options) => {
   if (options.printDate) {
     const date = new Date().toDateString();
 
@@ -165,7 +165,7 @@ const getFileName = options => {
  *
  * @param {Document} node
  */
-const setTemporalPadding = node => {
+const setTemporalPadding = (node) => {
   ORIGINAL_PADDING = node.style.padding;
   node.style.padding = '3px';
 };
@@ -174,15 +174,35 @@ const setTemporalPadding = node => {
  *
  * @param {Document} node
  */
-const revertPadding = node => {
+const revertPadding = (node) => {
   node.style.padding = ORIGINAL_PADDING;
+};
+
+const removeElements = (node) => {
+  const els = node.querySelectorAll(['.remove-when-downloading']);
+
+  for (const element of els) {
+    element.setAttribute(
+      'original_display',
+      window.getComputedStyle(element).display
+    );
+    element.style.display = 'none';
+  }
+};
+
+const recoveryElements = (node) => {
+  const els = node.querySelectorAll(['.remove-when-downloading']);
+
+  for (const element of els) {
+    element.style.display = element.getAttribute('original_display');
+  }
 };
 
 /**
  *
  * @param {*} node
  */
-export const filterElements = node => {
+export const filterElements = (node) => {
   return node.className !== 'hide-when-downloading';
 };
 
@@ -205,6 +225,7 @@ export const scaffolding = async (
   applyFixs(node, options.forceFixText);
 
   setTemporalPadding(node);
+  removeElements(node);
 
   try {
     canvas = await callback();
@@ -216,6 +237,7 @@ export const scaffolding = async (
     canvas = await callback();
   }
 
+  recoveryElements(node);
   revertPadding(node);
 
   saveAs(canvas, `${getFileName(options)}.${extension}`);

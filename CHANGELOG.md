@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2020-04-09
+
+### Fix
+- Add **Remove-elements** (display: none)
+
+## [1.3.2] - 2020-03-09
+
+### Fix
+- Add **Hide-elements* (visibility: hidden)
 
 ## [1.3.1] - 2020-02-26
 

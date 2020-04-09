@@ -30,7 +30,9 @@ The options are:
 
 ## Hide Elements
 
-You can hide elements adding the class "hide-when-downloading".
+You can hide elements adding the class **"hide-when-downloading"**.
+
+Hide elements apply `display: hidden` to the elements with this class;
 
 ```
   <section>
@@ -45,6 +47,13 @@ saveAsPng(node, {  filename: 'News', printDate: true });
 ```
 
 **Note**: The class "hide-when-downloading" must be on root element, That we want hide.
+
+## Remove Elements
+
+You can remove elements adding the class **"remove-when-downloading"**.
+
+Remove Elements apply `display: none` to the elements. So the space into the element will remove.
+
 
 ## Browsers
 It's tested on the lasted Chrome (Chrome 76),  Firefox and *Safari*.
