@@ -1,4 +1,8 @@
 # save-html-as-image
+
+[![npm version](https://badge.fury.io/js/save-html-as-image.svg)](https://badge.fury.io/js/save-html-as-image)
+
+
 This can be used for a couple of things, it can save HTML (DOM) as an image (JPG,PNG) and it can convert SVG images to PNG.
 Convering SVG to PNG is useful for Safari Browser compatibility since it cannot render SVG images.
 
