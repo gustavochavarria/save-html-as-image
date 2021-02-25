@@ -158,7 +158,7 @@ const getFileName = (options) => {
     return `${options.filename} (${date})`;
   }
 
-  return options.filename;
+  return options.filename || 'Image';
 };
 
 /**
@@ -219,7 +219,7 @@ export const scaffolding = async (
   callback,
   extension = 'png'
 ) => {
-  const options = getOptions(userOptions);
+  const options = getOptions(userOptions || {});
   let canvas = null;
 
   applyFixs(node, options.forceFixText);
@@ -239,6 +239,9 @@ export const scaffolding = async (
 
   recoveryElements(node);
   revertPadding(node);
+
+  console.log({ options, extension });
+  console.log(getFileName(options));
 
   saveAs(canvas, `${getFileName(options)}.${extension}`);
 };

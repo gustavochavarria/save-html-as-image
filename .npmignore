@@ -10,3 +10,6 @@ yarn.lock
 .editorconfig
 .prettierrc
 .nvmrc
+
+/docs
+docs
