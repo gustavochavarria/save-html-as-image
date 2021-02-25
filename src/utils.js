@@ -8,7 +8,7 @@ import { saveAs } from 'file-saver';
 const DEFAULT_OPTIONS = {
   filename: 'Image',
   forceFixText: false,
-  printDate: true
+  printDate: true,
 };
 
 let ORIGINAL_PADDING = null;
@@ -61,7 +61,7 @@ const hardFixText = (
     'mark',
     'p',
     'small',
-    'strong'
+    'strong',
   ]
 ) => {
   const allTexts = node.querySelectorAll(seek);
@@ -143,7 +143,7 @@ const applyFixs = (node, forceFixText = false) => {
 const getOptions = (userOptions) => {
   return {
     ...DEFAULT_OPTIONS,
-    ...userOptions
+    ...userOptions,
   };
 };
 
@@ -239,9 +239,6 @@ export const scaffolding = async (
 
   recoveryElements(node);
   revertPadding(node);
-
-  console.log({ options, extension });
-  console.log(getFileName(options));
 
   saveAs(canvas, `${getFileName(options)}.${extension}`);
 };

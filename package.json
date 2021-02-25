@@ -1,6 +1,6 @@
 {
   "name": "save-html-as-image",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -18,6 +18,7 @@
   },
   "keywords": [
     "convert html to image png or jpg",
+    "download html to image",
     "dom to image",
     "dom-to-image",
     "download",
