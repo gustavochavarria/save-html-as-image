@@ -4,7 +4,16 @@
 
 
 This can be used for a couple of things, it can save HTML (DOM) as an image (JPG,PNG) and it can convert SVG images to PNG.
-Convering SVG to PNG is useful for Safari Browser compatibility since it cannot render SVG images.
+Converting SVG to PNG is useful for Safari Browser compatibility since it cannot render SVG images.
+
+## Structure
+
+```js
+
+saveAsPng(NODE_ELEMENT, USER_OPTIONS, DOM_OPTIONS);
+saveAsJpeg(NODE_ELEMENT, USER_OPTIONS, DOM_OPTIONS);
+
+```
 
 ## Usage
 
@@ -22,14 +31,44 @@ saveAsPng(node, {  filename: 'Report', printDate: true });
 //download the node as jpeg. Album.jpeg
 saveAsJpeg(node, {  filename: 'Album', printDate: false });
 
+//download the node as jpeg. Album50.jpeg (With 50% of quality)
+saveAsJpeg(node, {  filename: 'Album50', printDate: false }, {quality: 0.5});
+
+//download the node as png and add padding and center the principal Element
+saveAsPng(
+    node,
+    {  filename: 'Report', printDate: true },
+    {
+      backgroundColor: 'rgba(101,198,185,0.5)',
+      style: {
+        padding: '4px',
+        display: 'flex',
+        justifyContent: 'center',
+      },
+    }
+  );
+
+
 ```
 
-## Options
+## USER Options
 
 The options are: 
 - **filename** : The name of the file when download.
 - **printDate** : The date of the download.
 - **forceFixText** : Prevent some error with text.
+
+
+## DOM Options (New)
+
+Modify the DOM and IMAGE to download.
+
+The options available are:
+- **backgroundColor** : A string value for the background color, any valid CSS color value.
+- **width, height** : Width and height in pixels to be applied to node before rendering. (Only work together)
+- **style** : An object whose properties to be copied to node's style before rendering. Check (https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+- **quality** : A number between 0 and 1 indicating image quality (e.g. 0.92 => 92%) of the JPEG image. Defaults to 1.0 (100%)
+- **pixelRatio** : The pixel ratio of the captured image. Default use the actual pixel ratio of the device. Defaults to 1
 
 
 ## Hide Elements

@@ -1,7 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.4.0] - 2020-02-25
+## [1.5.0] - 2021-03-22
+- Adding DOM OPTIONS
+- Breaking changes
+
+### Breaking changes
+- Remove Default Padding in DOM, now you must provide the padding/margin to download
+- Remove Default Style (boxShadow: 'none')
+
+
+## [1.4.0] - 2021-02-25
 - Updating dependencies
 - No breaking changes
 
