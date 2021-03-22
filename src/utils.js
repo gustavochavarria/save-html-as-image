@@ -8,10 +8,8 @@ import { saveAs } from 'file-saver';
 const DEFAULT_OPTIONS = {
   filename: 'Image',
   forceFixText: false,
-  printDate: true
+  printDate: true,
 };
-
-let ORIGINAL_PADDING = null;
 
 /**
  * Set computed style in static style of svg element
@@ -61,7 +59,7 @@ const hardFixText = (
     'mark',
     'p',
     'small',
-    'strong'
+    'strong',
   ]
 ) => {
   const allTexts = node.querySelectorAll(seek);
@@ -143,7 +141,7 @@ const applyFixs = (node, forceFixText = false) => {
 const getOptions = (userOptions) => {
   return {
     ...DEFAULT_OPTIONS,
-    ...userOptions
+    ...userOptions,
   };
 };
 
@@ -159,23 +157,6 @@ const getFileName = (options) => {
   }
 
   return options.filename || 'Image';
-};
-
-/**
- *
- * @param {Document} node
- */
-const setTemporalPadding = (node) => {
-  ORIGINAL_PADDING = node.style.padding;
-  node.style.padding = '3px';
-};
-
-/**
- *
- * @param {Document} node
- */
-const revertPadding = (node) => {
-  node.style.padding = ORIGINAL_PADDING;
 };
 
 const removeElements = (node) => {
@@ -224,7 +205,6 @@ export const scaffolding = async (
 
   applyFixs(node, options.forceFixText);
 
-  setTemporalPadding(node);
   removeElements(node);
 
   try {
@@ -238,7 +218,6 @@ export const scaffolding = async (
   }
 
   recoveryElements(node);
-  revertPadding(node);
 
   saveAs(canvas, `${getFileName(options)}.${extension}`);
 };
