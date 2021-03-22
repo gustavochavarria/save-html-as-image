@@ -3,18 +3,20 @@
 import { toPng, toJpeg } from 'html-to-image';
 
 import { filterElements, scaffolding } from './utils';
+import { getImageOptions } from './utils-image-options';
 
 /**
  *  Save html as Jpeg Image
  *
  * @param {*} node
  * @param {*} userOptions
+ * @param {*} imageOptions
  */
-export const saveAsJpeg = async (node, userOptions = {}) => {
+export const saveAsJpeg = async (node, userOptions = {}, imageOptions = {}) => {
   const callback = () =>
     toJpeg(node, {
-      style: { boxShadow: 'none' },
-      filter: filterElements
+      filter: filterElements,
+      ...getImageOptions(imageOptions, 'jpeg'),
     });
 
   await scaffolding(node, userOptions, callback, 'jpeg');
@@ -23,14 +25,15 @@ export const saveAsJpeg = async (node, userOptions = {}) => {
 /**
  * Save html as png image
  *
- * @param {Document} node
- * @param {Object} userOptions
+ * @param {*} node
+ * @param {*} userOptions
+ * @param {*} imageOptions
  */
-export const saveAsPng = async (node, userOptions = {}) => {
+export const saveAsPng = async (node, userOptions = {}, imageOptions = {}) => {
   const callback = () =>
     toPng(node, {
-      style: { boxShadow: 'none' },
-      filter: filterElements
+      filter: filterElements,
+      ...getImageOptions(imageOptions),
     });
 
   await scaffolding(node, userOptions, callback, 'png');
@@ -38,6 +41,7 @@ export const saveAsPng = async (node, userOptions = {}) => {
 
 /**
  * @deprecated use saveAsPng
+ * Will removed in version 1.6
  * Download the DOM node to png file
  *
  * @param {Document} node
