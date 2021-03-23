@@ -26,15 +26,18 @@ const node = document.getElementById('elementId');
 saveAsPng(node);
 
 //download the node as png. Report (2019-12-01).png
-saveAsPng(node, {  filename: 'Report', printDate: true });
+saveAsPng(node, { filename: 'Report', printDate: true });
 
 //download the node as jpeg. Album.jpeg
-saveAsJpeg(node, {  filename: 'Album', printDate: false });
+saveAsJpeg(node, { filename: 'Album', printDate: false });
 
 //download the node as jpeg. Album50.jpeg (With 50% of quality)
-saveAsJpeg(node, {  filename: 'Album50', printDate: false }, {quality: 0.5});
+saveAsJpeg(node, 
+  { filename: 'Album50', printDate: false }, 
+  { quality: 0.5 }
+);
 
-//download the node as png and add padding and center the principal Element
+//download the node as png and Add padding and center element
 saveAsPng(
     node,
     {  filename: 'Report', printDate: true },
@@ -67,7 +70,7 @@ The options available are:
 - **backgroundColor** : A string value for the background color, any valid CSS color value.
 - **width, height** : Width and height in pixels to be applied to node before rendering. (Only work together)
 - **style** : An object whose properties to be copied to node's style before rendering. Check (https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
-- **quality** : A number between 0 and 1 indicating image quality (e.g. 0.92 => 92%) of the JPEG image. Defaults to 1.0 (100%)
+- **quality** : A number between 0 and 1 indicating image quality (e.g. 0.92 => 92%) of the JPEG image. Defaults to 1.0
 - **pixelRatio** : The pixel ratio of the captured image. Default use the actual pixel ratio of the device. Defaults to 1
 
 

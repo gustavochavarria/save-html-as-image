@@ -1,18 +1,45 @@
+/* global window */
+
 /**
  *
+ * @param {*} node
+ * @param {*} opt
+ * @returns
+ */
+const getSizes = (node, opt) => {
+  if (opt.width && opt.height) {
+    const { width, height } = opt;
+
+    return { width, height };
+  }
+
+  const { width, height } = window.getComputedStyle(node);
+
+  return {
+    width: Number.parseInt(width.replace('px', ''), 10) + 4,
+    height: Number.parseInt(height.replace('px', ''), 10) + 4
+  };
+};
+
+/**
+ *
+ * @param {*} node
  * @param {*} opt
  * @param {*} format
  * @returns
  */
-export const getImageOptions = (opt, format = 'png') => {
-  const { backgroundColor, quality, width, height, pixelRatio, style } = opt;
-  let currentOptions = {};
+export const getImageOptions = (node, opt, format = 'png') => {
+  const { backgroundColor, quality, pixelRatio, style } = opt;
+  let currentOptions = {
+    ...getSizes(node, opt),
+    pixelRatio: 1
+  };
 
   // Style
   if (style) {
     currentOptions = {
       ...currentOptions,
-      style,
+      style
     };
   }
 
@@ -20,24 +47,15 @@ export const getImageOptions = (opt, format = 'png') => {
   if (backgroundColor) {
     currentOptions = {
       ...currentOptions,
-      backgroundColor,
-    };
-  }
-
-  // Width and height
-  if (width && height) {
-    currentOptions = {
-      ...currentOptions,
-      width,
-      height,
+      backgroundColor
     };
   }
 
   // Pixel Ratio
-  if (pixelRatio && pixelRatio > 1) {
+  if (pixelRatio && pixelRatio > 0) {
     currentOptions = {
       ...currentOptions,
-      pixelRatio,
+      pixelRatio
     };
   }
 
@@ -47,7 +65,7 @@ export const getImageOptions = (opt, format = 'png') => {
 
     currentOptions = {
       ...currentOptions,
-      quality: q,
+      quality: q
     };
   }
 

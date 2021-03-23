@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [1.5.2] - 2021-03-22
+- Add 4px of default width & height
+
+## [1.5.1] - 2021-03-22
+- Fix Scale of images
+- NO Breaking changes
+
 ## [1.5.0] - 2021-03-22
 - Adding DOM OPTIONS
 - Breaking changes

@@ -16,7 +16,7 @@ export const saveAsJpeg = async (node, userOptions = {}, imageOptions = {}) => {
   const callback = () =>
     toJpeg(node, {
       filter: filterElements,
-      ...getImageOptions(imageOptions, 'jpeg'),
+      ...getImageOptions(node, imageOptions, 'jpeg')
     });
 
   await scaffolding(node, userOptions, callback, 'jpeg');
@@ -33,7 +33,7 @@ export const saveAsPng = async (node, userOptions = {}, imageOptions = {}) => {
   const callback = () =>
     toPng(node, {
       filter: filterElements,
-      ...getImageOptions(imageOptions),
+      ...getImageOptions(node, imageOptions, 'png')
     });
 
   await scaffolding(node, userOptions, callback, 'png');
