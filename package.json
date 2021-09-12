@@ -1,6 +1,6 @@
 {
   "name": "save-html-as-image",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -38,11 +38,11 @@
   "homepage": "https://github.com/gustavochavarria/save-html-as-image#readme",
   "dependencies": {
     "file-saver": "^2.0.5",
-    "html-to-image": "^1.3.21",
+    "html-to-image": "gustavochavarria/html-to-image#develop",
     "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {
-    "microbundle": "^0.13.0",
+    "microbundle": "^0.13.3",
     "xo": "^0.32.1"
   },
   "xo": {

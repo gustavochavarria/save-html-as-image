@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [1.6.0] - 2021-09-12
+- Fix bug with cache in HTML-TO-IMAGE package
+
 ## [1.5.2] - 2021-03-22
 - Add 4px of default width & height
 
