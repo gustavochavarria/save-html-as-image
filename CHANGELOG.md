@@ -1,7 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-
+## [1.7.1] - 2022-02-16
+- Fix problem with external node_modules
+- Update Packages
 
 ## [1.6.0] - 2021-09-12
 - Fix bug with cache in HTML-TO-IMAGE package
