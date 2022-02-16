@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "scripts": {
-    "build": "yarn lint && rm -irf dist && microbundle --compress --target node",
+    "build": "yarn lint && rm -irf dist && microbundle --format cjs,esm",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
@@ -37,7 +37,7 @@
   "homepage": "https://github.com/gustavochavarria/save-html-as-image#readme",
   "dependencies": {
     "file-saver": "^2.0.5",
-    "html-to-image": "gustavochavarria/html-to-image#develop",
+    "html-to-image": "^1.9.0",
     "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {
