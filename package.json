@@ -1,13 +1,12 @@
 {
   "name": "save-html-as-image",
-  "version": "1.6.0",
+  "version": "1.7.1",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "yarn lint && rm -irf dist && microbundle --compress",
+    "build": "yarn lint && rm -irf dist && microbundle --compress --target node",
     "dev": "microbundle watch",
     "lint": "xo --fix",
     "test": "xo"
@@ -42,7 +41,7 @@
     "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {
-    "microbundle": "^0.13.3",
+    "microbundle": "^0.14.2",
     "xo": "^0.32.1"
   },
   "xo": {
