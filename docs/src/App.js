@@ -134,6 +134,7 @@ function App() {
           </Grid>
         </Box>
 
+        <Heading my="16px">Image</Heading>
         <Box mx="auto" width="500px">
           <Image src="leon-nicaragua.jpg" my="16px" rounded="lg" />
         </Box>
