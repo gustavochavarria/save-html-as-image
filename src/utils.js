@@ -184,7 +184,7 @@ const showElements = (node) => {
 };
 
 const recoveryElements = (node) => {
-  const els = node.querySelectorAll(['.remove-when-downloading']);
+  const els = node.querySelectorAll(['.remove-when-downloading','.show-when-downloading']);
 
   for (const element of els) {
     element.style.display = element.getAttribute('original_display');
