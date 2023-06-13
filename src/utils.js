@@ -171,6 +171,18 @@ const removeElements = (node) => {
   }
 };
 
+const showElements = (node) => {
+  const els = node.querySelectorAll(['.show-when-downloading']);
+
+  for (const element of els) {
+    element.setAttribute(
+      'original_display',
+      window.getComputedStyle(element).display
+    );
+    element.style.display = 'inherit';
+  }
+};
+
 const recoveryElements = (node) => {
   const els = node.querySelectorAll(['.remove-when-downloading']);
 
@@ -206,6 +218,7 @@ export const scaffolding = async (
   applyFixs(node, options.forceFixText);
 
   removeElements(node);
+  showElements(node);
 
   try {
     canvas = await callback();
