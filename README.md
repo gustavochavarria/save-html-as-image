@@ -100,6 +100,11 @@ You can remove elements adding the class **"remove-when-downloading"**.
 
 Remove Elements apply `display: none` to the elements. So the space into the element will remove.
 
+## Show Elements
+
+You can show elements by adding the class **"show-when-downloading"**.
+
+Show elements apply `display: inherit` to the elements with this class;
 
 ## Browsers
 It's tested on the lasted Chrome (Chrome 76),  Firefox and *Safari*.

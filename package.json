@@ -1,6 +1,6 @@
 {
   "name": "save-html-as-image",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Save the html as image like png or jpg",
   "source": "src/index.js",
   "main": "dist/index.js",
